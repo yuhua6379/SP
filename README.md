@@ -1,3 +1,1 @@
-# IJCAI-18
-# IJCAI-18
 # SP
