@@ -76,7 +76,23 @@ object AliMamaPredictor {
 //      }
 //    }
 
-    val trainingFields = Array("item_brand_id","item_city_id","item_price_level","item_sales_level","item_collected_level","item_pv_level","user_gender_id","user_age_level","user_occupation_id","user_star_level","context_page_id","shop_review_num_level","shop_star_level");
+    val trainingFields = Array(
+      "shop_id",
+      "item_id",
+
+      "item_brand_id",
+      "item_city_id",
+      "item_price_level",
+      "item_sales_level",
+      "item_collected_level",
+      "item_pv_level",
+      "user_gender_id",
+      "user_age_level",
+      "user_occupation_id",
+      "user_star_level",
+      "context_page_id",
+      "shop_review_num_level",
+      "shop_star_level");
 
     df = Utils.OneHot(trainingFields, df)
     //Assemble!
