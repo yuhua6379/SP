@@ -91,42 +91,24 @@ object AliMamaPredictor {
     var trainSet = dfs(1)
 
 
-    //用XGBoost跑
-    val numRound = 50
-    val nWorkers = 64
-    val useExternalMemory = true
-    val paramMap = List(
-      "eta" -> 0.1f,
-      "max_depth" -> 2,
-      "objective" -> "binary:logistic").toMap
-
-    val model = XGBoost.trainWithDataFrame(
-      trainingData = trainSet,
-      params = paramMap,
-      round = numRound,
-      nWorkers = nWorkers ,
-      useExternalMemory = true,
-      missing=0.0f,
-      featureCol = "feat_vec",
-      labelCol = "is_trade")
-
-    System.out.println("trainSet schema:")
-    trainSet.printSchema()
-
-    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
-
-    System.out.println("testSet schema:")
-    testSet.printSchema()
-    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
-
-//    //用LR训练和预测
-//    val model = new LogisticRegression()
-//      .setRegParam(0.0)
-//      .setMaxIter(100)
-//      .setTol(1e-7)
-//      .setElasticNetParam(0)
-//      .setFeaturesCol("feat_vec")
-//      .setLabelCol("is_trade").fit(trainSet)
+//    //用XGBoost跑
+//    val numRound = 50
+//    val nWorkers = 64
+//    val useExternalMemory = true
+//    val paramMap = List(
+//      "eta" -> 0.1f,
+//      "max_depth" -> 2,
+//      "objective" -> "binary:logistic").toMap
+//
+//    val model = XGBoost.trainWithDataFrame(
+//      trainingData = trainSet,
+//      params = paramMap,
+//      round = numRound,
+//      nWorkers = nWorkers ,
+//      useExternalMemory = true,
+//      missing=0.0f,
+//      featureCol = "feat_vec",
+//      labelCol = "is_trade")
 //
 //    System.out.println("trainSet schema:")
 //    trainSet.printSchema()
@@ -136,5 +118,23 @@ object AliMamaPredictor {
 //    System.out.println("testSet schema:")
 //    testSet.printSchema()
 //    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
+
+    //用LR训练和预测
+    val model = new LogisticRegression()
+      .setRegParam(0.0)
+      .setMaxIter(100)
+      .setTol(1e-7)
+      .setElasticNetParam(0)
+      .setFeaturesCol("feat_vec")
+      .setLabelCol("is_trade").fit(trainSet)
+
+    System.out.println("trainSet schema:")
+    trainSet.printSchema()
+
+    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
+
+    System.out.println("testSet schema:")
+    testSet.printSchema()
+    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
   }
 }
