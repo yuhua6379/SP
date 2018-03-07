@@ -4,6 +4,7 @@ import org.apache.spark.sql.functions._
 import org.apache.spark.ml.classification.{LogisticRegression, LogisticRegressionModel}
 import org.apache.spark.ml.evaluation.BinaryClassificationEvaluator
 import org.apache.spark.ml.feature.VectorAssembler
+import org.apache.spark.ml.regression.GBTRegressor
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.DataTypes
 
@@ -135,14 +136,32 @@ object AliMamaPredictor {
 //    testSet.printSchema()
 //    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
 
+//    //用LR训练和预测
+//    val model = new LogisticRegression()
+//      .setRegParam(0.0)
+//      .setMaxIter(100)
+//      .setTol(1e-7)
+//      .setElasticNetParam(0)
+//      .setFeaturesCol("feat_vec")
+//      .setLabelCol("is_trade").fit(trainSet)
+//
+//    System.out.println("trainSet schema:")
+//    trainSet.printSchema()
+//
+//    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
+//
+//    System.out.println("testSet schema:")
+//    testSet.printSchema()
+//    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
+
     //用LR训练和预测
-    val model = new LogisticRegression()
-      .setRegParam(0.0)
+    val model = new GBTRegressor()
       .setMaxIter(100)
-      .setTol(1e-7)
-      .setElasticNetParam(0)
-      .setFeaturesCol("feat_vec")
-      .setLabelCol("is_trade").fit(trainSet)
+      .setImpurity("gini")
+      .setMaxDepth(20)
+      .setStepSize(0.1)
+      .setSeed(13)
+      .setFeaturesCol("feat_vec").setLabelCol("is_trade").fit(trainSet);
 
     System.out.println("trainSet schema:")
     trainSet.printSchema()
