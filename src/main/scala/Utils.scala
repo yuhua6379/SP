@@ -22,7 +22,7 @@ object Utils {
 
       val encoder = new OneHotEncoder().setInputCol(INDEX_col).setOutputCol(VEC_col).setDropLast(false)
       ddf = encoder.transform(ddf)
-      ddf = ddf.drop(col).withColumnRenamed(col, VEC_col)
+      ddf = ddf.drop(col).drop(INDEX_col).withColumnRenamed(VEC_col, col)
     }
     ddf
   }
