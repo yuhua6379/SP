@@ -77,10 +77,9 @@ object AliMamaPredictor {
 //      }
 //    }
 
-    val trainingFields = Array(
+    val enumFields = Array(
       "shop_id",
       "item_id",
-
       "item_brand_id",
       "item_city_id",
       "item_price_level",
@@ -95,11 +94,31 @@ object AliMamaPredictor {
       "shop_review_num_level",
       "shop_star_level");
 
-    df = Utils.OneHot(trainingFields, df)
+    val numericFields = Array(
+      "shop_score_service",
+      "shop_score_delivery",
+      "shop_score_description",
+      "shop_review_positive_rate"
+    )
+
+
+
+    df = Utils.OneHot(enumFields, df)
+
+    System.out.println("OneHot之后的Schema:")
+    df.printSchema()
+    df.show(10, false)
+
     //Assemble!
     df = new VectorAssembler()
-      .setInputCols(trainingFields)
+      .setInputCols(enumFields ++ numericFields)
       .setOutputCol("feat_vec").transform(df)
+
+    df.select("feat_vec", "is_trade")
+
+    System.out.println("Assembler之后的Schema:")
+    df.printSchema()
+    df.show(10, false)
 
     //抽样用于训练和测试，666是种子，保证数据是每次一样的伪随机抽样
     val dfs = df.randomSplit(Array(0.05,0.95), 666);
@@ -154,23 +173,23 @@ object AliMamaPredictor {
 //    testSet.printSchema()
 //    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
 
-    //用LR训练和预测
-    val model = new GBTRegressor()
-      .setMaxIter(100)
-      .setMinInstancesPerNode(10)
-      .setImpurity("gini")
-      .setMaxDepth(20)
-      .setStepSize(0.1)
-      .setSeed(13)
-      .setFeaturesCol("feat_vec").setLabelCol("is_trade").fit(trainSet);
-
-    System.out.println("trainSet schema:")
-    trainSet.printSchema()
-
-    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
-
-    System.out.println("testSet schema:")
-    testSet.printSchema()
-    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
+//    //用GBDT训练和预测
+//    val model = new GBTRegressor()
+//      .setMaxIter(100)
+//      .setMinInstancesPerNode(10)
+//      .setImpurity("gini")
+//      .setMaxDepth(20)
+//      .setStepSize(0.1)
+//      .setSeed(13)
+//      .setFeaturesCol("feat_vec").setLabelCol("is_trade").fit(trainSet);
+//
+//    System.out.println("trainSet schema:")
+//    trainSet.printSchema()
+//
+//    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
+//
+//    System.out.println("testSet schema:")
+//    testSet.printSchema()
+//    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
   }
 }
