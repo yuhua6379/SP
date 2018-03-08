@@ -114,7 +114,7 @@ object AliMamaPredictor {
       .setInputCols(enumFields ++ numericFields)
       .setOutputCol("feat_vec").transform(df)
 
-    df.select("feat_vec", "is_trade")
+    df = df.select("feat_vec", "is_trade")
 
     System.out.println("Assembler之后的Schema:")
     df.printSchema()
