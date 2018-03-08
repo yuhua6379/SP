@@ -157,6 +157,7 @@ object AliMamaPredictor {
     //用LR训练和预测
     val model = new GBTRegressor()
       .setMaxIter(100)
+      .setMinInstancesPerNode(10)
       .setImpurity("gini")
       .setMaxDepth(20)
       .setStepSize(0.1)
