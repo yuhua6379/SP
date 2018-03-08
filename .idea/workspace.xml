@@ -26,8 +26,8 @@
       <file leaf-file-name="AliMamaPredictor.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="120" column="14" lean-forward="false" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="14" />
+            <state relative-caret-position="310">
+              <caret line="120" column="13" lean-forward="false" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
               <folding>
                 <element signature="e#16#60#0" expanded="true" />
               </folding>
@@ -328,12 +328,12 @@
       <updated>1519885560939</updated>
       <workItem from="1519885564647" duration="3000" />
       <workItem from="1519885572552" duration="19189000" />
-      <workItem from="1520423269979" duration="7453000" />
+      <workItem from="1520423269979" duration="7463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26645000" />
+    <option name="totallyTimeSpent" value="26655000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -531,8 +531,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="120" column="14" lean-forward="false" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="14" />
+        <state relative-caret-position="310">
+          <caret line="120" column="13" lean-forward="false" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
           <folding>
             <element signature="e#16#60#0" expanded="true" />
           </folding>

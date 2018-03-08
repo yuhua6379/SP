@@ -107,7 +107,7 @@ object AliMamaPredictor {
 
     System.out.println("OneHot之后的Schema:")
     df.printSchema()
-    df.show(10, false)
+    df.show(1)
 
     //Assemble!
     df = new VectorAssembler()
@@ -118,7 +118,7 @@ object AliMamaPredictor {
 
     System.out.println("Assembler之后的Schema:")
     df.printSchema()
-    df.show(10)
+    df.show(1)
 
     //抽样用于训练和测试，666是种子，保证数据是每次一样的伪随机抽样
     val dfs = df.randomSplit(Array(0.05,0.95), 666);
