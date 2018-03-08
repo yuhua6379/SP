@@ -17,9 +17,6 @@ object AliMamaPredictor {
       .option("sep", " ")
       .load("/user/utp/competition/IJCAI-18/training_data/round1_ijcai_18_train_20180301.txt")
 
-    //加速！
-    df = df.cache()
-
     df = df
         //TODO: ID类型特征
         .withColumn("instance_id", col("instance_id").cast(DataTypes.LongType))
@@ -126,7 +123,9 @@ object AliMamaPredictor {
     var testSet = dfs(0)
     var trainSet = dfs(1)
 
-
+    //加速！
+    trainSet = trainSet.cache()
+    testSet = testSet.cache()
 //    //用XGBoost跑
 //    val numRound = 50
 //    val nWorkers = 64
@@ -155,33 +154,14 @@ object AliMamaPredictor {
 //    testSet.printSchema()
 //    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
 
-    //用LR训练和预测
-    val model = new LogisticRegression()
-      .setRegParam(0.0)
-      .setMaxIter(100)
-      .setTol(1e-7)
-      .setElasticNetParam(0)
-      .setFeaturesCol("feat_vec")
-      .setLabelCol("is_trade").fit(trainSet)
-
-    System.out.println("trainSet schema:")
-    trainSet.printSchema()
-
-    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
-
-    System.out.println("testSet schema:")
-    testSet.printSchema()
-    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
-
-//    //用GBDT训练和预测
-//    val model = new GBTRegressor()
+//    //用LR训练和预测
+//    val model = new LogisticRegression()
+//      .setRegParam(0.0)
 //      .setMaxIter(100)
-//      .setMinInstancesPerNode(10)
-//      .setImpurity("gini")
-//      .setMaxDepth(20)
-//      .setStepSize(0.1)
-//      .setSeed(13)
-//      .setFeaturesCol("feat_vec").setLabelCol("is_trade").fit(trainSet);
+//      .setTol(1e-7)
+//      .setElasticNetParam(0)
+//      .setFeaturesCol("feat_vec")
+//      .setLabelCol("is_trade").fit(trainSet)
 //
 //    System.out.println("trainSet schema:")
 //    trainSet.printSchema()
@@ -191,5 +171,24 @@ object AliMamaPredictor {
 //    System.out.println("testSet schema:")
 //    testSet.printSchema()
 //    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
+
+    //用GBDT训练和预测
+    val model = new GBTRegressor()
+      .setMaxIter(100)
+      .setMinInstancesPerNode(10)
+      .setImpurity("gini")
+      .setMaxDepth(20)
+      .setStepSize(0.1)
+      .setSeed(13)
+      .setFeaturesCol("feat_vec").setLabelCol("is_trade").fit(trainSet);
+
+    System.out.println("trainSet schema:")
+    trainSet.printSchema()
+
+    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
+
+    System.out.println("testSet schema:")
+    testSet.printSchema()
+    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
   }
 }
