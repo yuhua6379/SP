@@ -155,23 +155,23 @@ object AliMamaPredictor {
 //    testSet.printSchema()
 //    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
 
-//    //用LR训练和预测
-//    val model = new LogisticRegression()
-//      .setRegParam(0.0)
-//      .setMaxIter(100)
-//      .setTol(1e-7)
-//      .setElasticNetParam(0)
-//      .setFeaturesCol("feat_vec")
-//      .setLabelCol("is_trade").fit(trainSet)
-//
-//    System.out.println("trainSet schema:")
-//    trainSet.printSchema()
-//
-//    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
-//
-//    System.out.println("testSet schema:")
-//    testSet.printSchema()
-//    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
+    //用LR训练和预测
+    val model = new LogisticRegression()
+      .setRegParam(0.0)
+      .setMaxIter(100)
+      .setTol(1e-7)
+      .setElasticNetParam(0)
+      .setFeaturesCol("feat_vec")
+      .setLabelCol("is_trade").fit(trainSet)
+
+    System.out.println("trainSet schema:")
+    trainSet.printSchema()
+
+    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
+
+    System.out.println("testSet schema:")
+    testSet.printSchema()
+    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
 
 //    //用GBDT训练和预测
 //    val model = new GBTRegressor()
