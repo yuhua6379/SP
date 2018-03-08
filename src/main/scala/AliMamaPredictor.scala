@@ -190,5 +190,7 @@ object AliMamaPredictor {
     System.out.println("testSet schema:")
     testSet.printSchema()
     System.out.println("LogLoss = " + Utils.LogLoss(testSet))
+
+    session.stop();
   }
 }
