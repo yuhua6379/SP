@@ -17,7 +17,7 @@ object AliMamaPredictor {
     val sc = new SparkContext(new SparkConf().setMaster("local").setAppName("FFMSuite"))
 
     val test = sc.textFile("file:///home/dig/yuhua/competition/ffm/7480da76d15f9940ad4adeb0093d6924-toFFMData.txt").map(_.split("\\s")).map(x => {
-      val y = if(x(0).toInt > 0 ) 1.0 else -1.0
+      val y = if(x(0).toFloat > 0 ) 1.0 else -1.0
       val nodeArray: Array[(Int, Int, Double)] = x.drop(1).map(_.split(":")).map(x => {
         (x(0).toInt, x(1).toInt, x(2).toDouble)
       })
@@ -25,7 +25,7 @@ object AliMamaPredictor {
     }).repartition(100)
 
     val train = sc.textFile("file:///home/dig/yuhua/competition/ffm/550ef59134f346bd9443bccd988add50-toFFMData.txt").map(_.split("\\s")).map(x => {
-      val y = if(x(0).toInt > 0 ) 1.0 else -1.0
+      val y = if(x(0).toFloat > 0 ) 1.0 else -1.0
       val nodeArray: Array[(Int, Int, Double)] = x.drop(1).map(_.split(":")).map(x => {
         (x(0).toInt, x(1).toInt, x(2).toDouble)
       })
