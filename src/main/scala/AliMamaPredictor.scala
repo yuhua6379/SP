@@ -13,14 +13,14 @@ object AliMamaPredictor {
 
     var df = sqlContext.read.parquet("/user/utp/competition/IJCAI-18/1st_df")
 
-    val selectFeatures = new Array[String](0);
+    var selectFeatures = new Array[String](0);
     for ( f <- df.schema.fields){
       if (f.name.equals("is_trade") == false
         && f.name.equals("instance_id") == false
         && f.name.equals("context_id") == false
         && f.name.equals("context_timestamp") == false
       ) {
-        selectFeatures :+ f.name
+        selectFeatures = selectFeatures :+ f.name
       }
     }
 
