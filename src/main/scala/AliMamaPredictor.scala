@@ -14,50 +14,57 @@ import org.apache.spark.sql.types.DataTypes
 object AliMamaPredictor {
   def main(args: Array[String]): Unit = {
 
-    val sc = new SparkContext(new SparkConf().setMaster("local").setAppName("FFMSuite"))
 
-    val test = sc.textFile("file:///home/dig/yuhua/competition/ffm/7480da76d15f9940ad4adeb0093d6924-toFFMData.txt").map(_.split("\\s")).map(x => {
-      val y = if(x(0).toFloat > 0 ) 1.0 else -1.0
-      val nodeArray: Array[(Int, Int, Double)] = x.drop(1).map(_.split(":")).map(x => {
-        (x(0).toInt, x(1).toInt, x(2).toDouble)
-      })
-      (y, nodeArray)
-    }).repartition(100)
-
-    val train = sc.textFile("file:///home/dig/yuhua/competition/ffm/550ef59134f346bd9443bccd988add50-toFFMData.txt").map(_.split("\\s")).map(x => {
-      val y = if(x(0).toFloat > 0 ) 1.0 else -1.0
-      val nodeArray: Array[(Int, Int, Double)] = x.drop(1).map(_.split(":")).map(x => {
-        (x(0).toInt, x(1).toInt, x(2).toDouble)
-      })
-      (y, nodeArray)
-    }).repartition(100)
-
-    val m = train.flatMap(x=>x._2).map(_._1).collect.reduceLeft(_ max _) //+ 1
-    val n = train.flatMap(x=>x._2).map(_._2).collect.reduceLeft(_ max _) //+ 1
-
-    val k = 4
-    val iter = 1000
-    val eta = 0.01
-    val lambda = 0.00002
-    val normal = false
-    val random = false
-
-    val ffm: FFMModel = FFMWithAdag.train(train, m, n, dim = (normal, random, k), n_iters = iter,
-      eta = eta, lambda = lambda, normalization = true, false, "adagrad")
-
-    val scores1: RDD[(Double, Double, Double)] = test.map(x => {
-      val label = x._1
-      val predict = ffm.predict(x._2)
-
-      val logloss = label * Math.log(predict) + (1 - label) * Math.log(1 - predict)
-//      val ret = if (p >= 0.5) 1.0 else -1.0
-      (predict, logloss, label)
-    })
-
-
-    val logloss = -(scores1.map(_._1).sum() / scores1.count())
-//    val logloss: RDD[Double] =
-    println(s"logloss = $logloss")
+//
+//    val test = sc.textFile("file:///home/dig/yuhua/competition/one_hot-valid.txt").map(_.split("\\s")).map(x => {
+//      val y = if(x(0).toFloat > 0 ) 1.0 else -1.0
+//      val nodeArray: Array[(Int, Int, Double)] = x.drop(1).map(_.split(":")).map(x => {
+//        (x(0).toInt + 1, x(1).toInt + 1, x(2).toDouble)
+//      })
+//      (y, nodeArray)
+//    }).repartition(5000).cache()
+//
+//    val train = sc.textFile("file:///home/dig/yuhua/competition/ffm/one_hot-train.txt").map(_.split("\\s")).map(x => {
+//      val y = if(x(0).toFloat > 0 ) 1.0 else -1.0
+//      val nodeArray: Array[(Int, Int, Double)] = x.drop(1).map(_.split(":")).map(x => {
+//        (x(0).toInt + 1, x(1).toInt + 1, x(2).toDouble)
+//      })
+//      (y, nodeArray)
+//    }).repartition(5000).cache()
+//
+//    val m = train.flatMap(x=>x._2).map(_._1).collect.reduceLeft(_ max _) //+ 1
+//    val n = train.flatMap(x=>x._2).map(_._2).collect.reduceLeft(_ max _) //+ 1
+//
+//    System.out.println("m = "+m + ", n = "+n)
+//    val k = 4
+//    val iter = 10
+//    val eta = 0.02
+//    val lambda = 0.00004
+//    val normal = false
+//    val random = false
+//
+//    val ffm: FFMModel = FFMWithAdag.train(train, m, n, dim = (normal, random, k), n_iters = iter,
+//      eta = eta, lambda = lambda, normalization = true, false, "adagrad")
+//
+//    val scores1: RDD[(Double, Double, Double)] = test.map(x => {
+//      var label = x._1
+//      val predict = ffm.predict(x._2)
+//
+//      if (label > 0){
+//        label = 1.0
+//      }else{
+//        label = 0.0
+//      }
+//
+//      val logloss = label * Math.log(predict) + (1.0 - label) * Math.log(1.0 - predict)
+////      val ret = if (p >= 0.5) 1.0 else -1.0
+//      (logloss, predict, label)
+//    })
+//
+//
+//    val logloss = -(scores1.map(_._1).sum() / scores1.count())
+////    val logloss: RDD[Double] =
+//    println(s"logloss = $logloss")
 
     //sometimes the max feature/field number would be different in training/testing dataset,
     // so use the whole dataset to get the max feature/field number
@@ -225,25 +232,53 @@ object AliMamaPredictor {
 //    testSet.printSchema()
 //    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
 
-//    //用GBDT训练和预测
-//    val model = new GBTRegressor()
-//      .setMaxIter(100)
-//      .setMinInstancesPerNode(10)
-//      .setImpurity("gini")
-//      .setMaxDepth(20)
-//      .setStepSize(0.1)
-//      .setSeed(13)
-//      .setFeaturesCol("feat_vec").setLabelCol("is_trade").fit(trainSet);
-//
-//    System.out.println("trainSet schema:")
-//    trainSet.printSchema()
-//
-//    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
-//
-//    System.out.println("testSet schema:")
-//    testSet.printSchema()
-//    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
-//
-//    session.stop();
+    val sc = new SparkContext(new SparkConf().setMaster("local").setAppName("IJCAI-18"))
+    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+
+    var df = sqlContext.read.parquet("/user/utp/competition/IJCAI-18/1st_df")
+
+    val selectFeatures = new Array[String](0);
+    for ( f <- df.schema.fields){
+      if (f.name.equals("is_trade") == false
+        && f.name.equals("instance_id") == false
+        && f.name.equals("context_id") == false
+        && f.name.equals("context_timestamp") == false
+      ) {
+        selectFeatures :+ f.name
+      }
+    }
+
+    System.out.println("selected features:")
+    System.out.println(selectFeatures)
+    //Assemble!
+    df = new VectorAssembler()
+      .setInputCols(selectFeatures)
+      .setOutputCol("feat_vec").transform(df)
+
+    var trainSet = df.filter("day < 6")
+    var testSet = df.filter("day == 7")
+    trainSet = trainSet.select("instance_id", "is_trade", "feat_vec")
+    testSet = testSet.select("instance_id", "is_trade", "feat_vec")
+
+    //用GBDT训练和预测
+    val model = new GBTRegressor()
+      .setMaxIter(91)
+      .setMinInstancesPerNode(10)
+      .setImpurity("gini")
+      .setMaxDepth(5)
+      .setStepSize(0.1)
+      .setSeed(13)
+      .setFeaturesCol("feat_vec").setLabelCol("is_trade").fit(trainSet);
+
+    System.out.println("trainSet schema:")
+    trainSet.printSchema()
+
+    testSet = model.setFeaturesCol("feat_vec").transform(testSet);
+
+    System.out.println("testSet schema:")
+    testSet.printSchema()
+    System.out.println("LogLoss = " + Utils.LogLoss(testSet))
+
+    sc.stop();
   }
 }
