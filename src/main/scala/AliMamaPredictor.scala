@@ -24,8 +24,9 @@ object AliMamaPredictor {
       }
     }
 
+
     System.out.println("selected features:")
-    System.out.println(selectFeatures)
+    System.out.println(selectFeatures.mkString(", "))
     //Assemble!
     df = new VectorAssembler()
       .setInputCols(selectFeatures)

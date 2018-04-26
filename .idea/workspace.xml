@@ -13,21 +13,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="43" column="25" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="43" selection-end-column="25" />
+            <state relative-caret-position="282">
+              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AliMamaPredictor.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AliMamaPredictor.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="370">
+              <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
               <folding>
                 <element signature="e#17#66#0" expanded="true" />
               </folding>
@@ -76,7 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SparkSession</find>
       <find>shop_star_level</find>
       <find>item_collected_level</find>
       <find>_trainingFields</find>
@@ -106,6 +105,7 @@
       <find>Array</find>
       <find>&amp;&amp;</find>
       <find>round1_ijcai_18_train_20180301</find>
+      <find>ffm</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -119,8 +119,8 @@
         <option value="$PROJECT_DIR$/src/main/scala/Udfs.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Utils.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/com/intel/scriptFile.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala" />
       </list>
     </option>
   </component>
@@ -360,12 +360,12 @@
       <workItem from="1521030023815" duration="539000" />
       <workItem from="1521816841990" duration="8950000" />
       <workItem from="1523723572412" duration="48000" />
-      <workItem from="1524625807845" duration="5611000" />
+      <workItem from="1524625807845" duration="6221000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46285000" />
+    <option name="totallyTimeSpent" value="46895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -802,21 +802,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#17#66#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="282">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="43" column="25" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="43" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="370">
+          <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+          <folding>
+            <element signature="e#17#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
