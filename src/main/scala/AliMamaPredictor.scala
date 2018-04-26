@@ -12,7 +12,7 @@ object AliMamaPredictor {
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
     var df = sqlContext.read.parquet("/user/utp/competition/IJCAI-18/1st_df")
-
+    df = df.repartition(200)
     var selectFeatures = new Array[String](0);
     for ( f <- df.schema.fields){
       if (f.name.equals("is_trade") == false
@@ -28,6 +28,7 @@ object AliMamaPredictor {
     System.out.println("selected features:")
     System.out.println(selectFeatures.mkString(", "))
     df = df.na.fill(0)
+
     //Assemble!
     df = new VectorAssembler()
       .setInputCols(selectFeatures)
