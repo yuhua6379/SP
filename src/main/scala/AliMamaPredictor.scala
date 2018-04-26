@@ -8,7 +8,7 @@ import org.apache.spark.ml.regression.GBTRegressor
 object AliMamaPredictor {
   def main(args: Array[String]): Unit = {
 
-    val sc = new SparkContext(new SparkConf().setMaster("local").setAppName("IJCAI-18"))
+    val sc = new SparkContext(new SparkConf().setAppName("IJCAI-18"))
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
     var df = sqlContext.read.parquet("/user/utp/competition/IJCAI-18/1st_df")
@@ -42,10 +42,10 @@ object AliMamaPredictor {
     //用GBDT训练和预测
     val model = new GBTRegressor()
       .setMaxIter(91)
-      .setMinInstancesPerNode(10)
+//      .setMinInstancesPerNode(10)
       .setImpurity("gini")
       .setMaxDepth(5)
-      .setStepSize(0.1)
+//      .setStepSize(0.1)
       .setSeed(13)
       .setFeaturesCol("feat_vec").setLabelCol("is_trade").fit(trainSet);
 
