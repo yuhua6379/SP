@@ -13,24 +13,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5044">
-              <caret line="194" column="0" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
+            <state relative-caret-position="412">
+              <caret line="43" column="25" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="43" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AliMamaPredictor.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AliMamaPredictor.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1659">
-              <caret line="283" column="1" lean-forward="false" selection-start-line="283" selection-start-column="1" selection-end-line="283" selection-end-column="1" />
+            <state relative-caret-position="26">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <element signature="e#16#82#0" expanded="true" />
-                <element signature="e#664#666#0" expanded="false" />
+                <element signature="e#17#66#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,7 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>IJ</find>
       <find>SparkSession</find>
       <find>shop_star_level</find>
       <find>item_collected_level</find>
@@ -107,6 +105,7 @@
       <find>enumFields</find>
       <find>Array</find>
       <find>&amp;&amp;</find>
+      <find>round1_ijcai_18_train_20180301</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -120,8 +119,8 @@
         <option value="$PROJECT_DIR$/src/main/scala/Udfs.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Utils.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/com/intel/scriptFile.scala" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -170,11 +169,6 @@
             <path>
               <item name="IJCAI18阿里妈妈搜索广告转化预测" type="b2602c69:ProjectViewProjectNode" />
               <item name="IJCAI18阿里妈妈搜索广告转化预测" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IJCAI18阿里妈妈搜索广告转化预测" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IJCAI18阿里妈妈搜索广告转化预测" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -202,8 +196,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -366,12 +360,12 @@
       <workItem from="1521030023815" duration="539000" />
       <workItem from="1521816841990" duration="8950000" />
       <workItem from="1523723572412" duration="48000" />
-      <workItem from="1524625807845" duration="5162000" />
+      <workItem from="1524625807845" duration="5611000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45836000" />
+    <option name="totallyTimeSpent" value="46285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -565,8 +559,7 @@
         <state relative-caret-position="254">
           <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
           <folding>
-            <element signature="e#16#82#0" expanded="true" />
-            <element signature="e#664#666#0" expanded="false" />
+            <element signature="e#17#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -584,8 +577,7 @@
         <state relative-caret-position="3302">
           <caret line="134" column="25" lean-forward="false" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
           <folding>
-            <element signature="e#16#82#0" expanded="true" />
-            <element signature="e#664#666#0" expanded="false" />
+            <element signature="e#17#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -623,8 +615,7 @@
         <state relative-caret-position="3484">
           <caret line="134" column="25" lean-forward="true" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
           <folding>
-            <element signature="e#16#82#0" expanded="true" />
-            <element signature="e#664#666#0" expanded="false" />
+            <element signature="e#17#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -662,8 +653,7 @@
         <state relative-caret-position="2652">
           <caret line="102" column="0" lean-forward="true" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
-            <element signature="e#16#82#0" expanded="true" />
-            <element signature="e#664#666#0" expanded="false" />
+            <element signature="e#17#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -781,14 +771,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/com/intel/scriptFile.scala" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5044">
-          <caret line="194" column="0" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/lang/Math.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -822,12 +804,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/AliMamaPredictor.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1659">
-          <caret line="283" column="1" lean-forward="false" selection-start-line="283" selection-start-column="1" selection-end-line="283" selection-end-column="1" />
+        <state relative-caret-position="26">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="e#16#82#0" expanded="true" />
-            <element signature="e#664#666#0" expanded="false" />
+            <element signature="e#17#66#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="43" column="25" lean-forward="false" selection-start-line="39" selection-start-column="12" selection-end-line="43" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -889,6 +878,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -908,7 +898,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
+          <last-edited>Maven: com.googlecode.protobuf-java-format:protobuf-java-format:1.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
